@@ -59,6 +59,17 @@ const senhas = [
 ];
 
 
+cpf1 = Math.floor(Math.random() * (987 - 157 + 157)) + 157
+cpf2 = Math.floor(Math.random() * (987 - 157 + 157)) + 157
+cpf3 = Math.floor(Math.random() * (987 - 157 + 157)) + 157
+cpf4 = Math.floor(Math.random() * (97 - 10 + 1)) + 10
+cpf5 = Math.floor(Math.random() * (9 - 1 + 1)) + 1
+
+
+//estrutura cpf 3.3.3-2
+//estrutura rg 2.3.3.1
+
+telefone = Math.floor(Math.random() * (11998735343 - 11911111111  + 1)) + 11911111111
 
          email = Math.floor(Math.random() * (50 - 1 + 1)) + 1
     nome = Math.floor(Math.random() * (50 - 1 + 1)) + 1
@@ -66,7 +77,12 @@ const senhas = [
 
 
 
-id_dodiv.innerHTML = `=============GERADOR DE PESSOA ALEATÓRIA================== <br> Nome: ${pessoas[nome]} <br> Email: ${emails[email]} <br> Senha: ${senhas[senha]} 
+id_dodiv.innerHTML = `=============GERADOR DE PESSOA ALEATÓRIA================== <br> Nome: ${pessoas[nome]} <br> Email: ${emails[email]} <br> Senha: ${senhas[senha]}<br>
+CPF:${cpf1}.${cpf2}.${cpf3}-${cpf4} <br>
+RG: ${cpf4}.${cpf1}.${cpf2}-${cpf5} <br>
+Telefone:${telefone}
+
+<img src="https://thispersondoesnotexist.com"  width="400">
 `
 
 
