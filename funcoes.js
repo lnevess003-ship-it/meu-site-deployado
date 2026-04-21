@@ -1,0 +1,68 @@
+function gerarPessoa(){
+
+    sumir.style.display = 'none'
+
+
+   const pessoas = [
+"Ana","Bruno","Carlos","Daniel","Eduardo","Fernanda","Gabriel","Helena","Igor","Julia",
+"Kleber","Larissa","Marcos","Natalia","Otavio","Patricia","Rafael","Sabrina","Thiago","Ursula",
+"Victor","Wesley","Xavier","Yasmin","Zeca","Alice","Breno","Caio","Diego","Elisa",
+"Felipe","Giovana","Hugo","Isabela","Joao","Karen","Leonardo","Mirela","Nicolas","Olivia",
+"Paulo","Quezia","Renato","Silvia","Tales","Vera","William","Yuri","Zilda","Andre"
+];
+
+const emails = [
+"ana@outlook.com","bruno@gmail.com","carlos@gmail.com","daniel@gmail.com","edu@gmail.com",
+"fernanda@gmail.com","gabriel@gmail.com","helena@gmail.com","igor@gmail.com","julia@gmail.com",
+"kleber@gmail.com","larissa@outlook.com","marcos@outlook.com","natalia@outlook.com","otavio@outlook.com",
+"patricia@outlook.com","rafael@outlook.com","sabrina@outlook.com","thiago@outlook.com","ursula@outlook.com",
+"victor@outlook.com","wesley@gov.com","xavier@gov.com","yasmin@gov.com","zeca@gov.com",
+"alice@hotmail.com","breno@hotmail.com","caio@hotmail.com","diego@hotmail.com","elisa@hotmail.com",
+"felipe@hotmail.com","giovana@hotmail.com","hugo@gov.com","isabela@gov.com","joao@gov.com",
+"karen@gov.com","leonardo@yahoo.com","mirela@yahoo.com","nicolas@yahoo.com","olivia@yahoo.com",
+"paulo@yahoo.com","quezia@yahoo.com","renato@yahoo.com","silvia@yahoo.com","tales@yahoo.com",
+"vera@yahoo.com","william@yahoo.com","yuri@yahoo.com","zilda@yahoo.com","andre@yahoo.com"
+];
+
+const senhas = [
+"123","abc","senha1","qwerty","pass123","senha2","teste1","1234","abcd","senha3",
+"xyz","1111","2222","3333","4444","5555","6666","7777","8888","9999",
+"pass1","pass2","pass3","pass4","pass5","segredo1","segredo2","segredo3","segredo4","segredo5",
+"login1","login2","login3","login4","login5","admin1","admin2","admin3","admin4","admin5",
+"user1","user2","user3","user4","user5","root1","root2","root3","root4","root5"
+];
+
+
+cpf1 = Math.floor(Math.random() * (987 - 157 + 1)) + 157
+cpf2 = Math.floor(Math.random() * (987 - 157 + 1)) + 157
+cpf3 = Math.floor(Math.random() * (987 - 157 + 1)) + 157
+cpf4 = Math.floor(Math.random() * (97 - 10 + 1)) + 10
+cpf5 = Math.floor(Math.random() * (9 - 1 + 1)) + 1
+
+
+//estrutura cpf 3.3.3-2
+//estrutura rg 2.3.3.1
+
+telefone = Math.floor(Math.random() * (11998735343 - 11911111111  + 1)) + 11911111111
+
+         email = Math.floor(Math.random() * (50 - 1 + 1)) + 1
+    nome = Math.floor(Math.random() * (50 - 1 + 1)) + 1
+    senha = Math.floor(Math.random() * (50 - 1 + 1)) + 1
+
+
+
+id_dodiv.innerHTML = `=============GERADOR DE PESSOA ALEATÓRIA================== <br> Nome: ${pessoas[nome]} <br> Email: ${emails[email]} <br> Senha: ${senhas[senha]}<br>
+CPF:${cpf1}.${cpf2}.${cpf3}-${cpf4} <br>
+RG: ${cpf4}.${cpf1}.${cpf2}-${cpf5} <br>
+Telefone:${telefone}
+
+<img src="https://thispersondoesnotexist.com"  width="400">
+`
+
+
+
+
+
+}
+
+

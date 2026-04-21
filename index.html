@@ -1,105 +1,175 @@
+GNU nano 8.7
+
+
 <!DOCTYPE html>
 <html lang="pt-BR">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Dashboard Top</title>
-  <link rel="stylesheet" href="styles.css">
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Protótipo 1 — O Mapa da Riqueza Interior</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,700;1,400&family=Cormorant+Garamond:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  body { font-family: 'Cormorant Garamond', serif; background: #0f0d0b; color: #f5f0e8; }
+  .hero { background: #0f0d0b; padding: 4rem 2rem 3rem; text-align: center; position: relative; overflow: hidden; max-width: 700px; margin: 0 auto; }
+  .hero::before { content: ''; position: absolute; inset: 0; background: radial-gradient(ellipse at 50% 0%, rgba(180,145,70,0.15) 0%, transparent 65%); pointer-events: none; }
+  .eyebrow { font-size: 11px; letter-spacing: 4px; text-transform: uppercase; color: #b49146; margin-bottom: 2rem; }
+  h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 6vw, 3.2rem); font-weight: 400; line-height: 1.12; margin-bottom: 1rem; color: #f5f0e8; }
+  h1 em { font-style: italic; color: #b49146; }
+  .subtitle { font-size: 1.2rem; font-weight: 300; color: #c8bfa8; max-width: 500px; margin: 0 auto 2.5rem; line-height: 1.6; }
+  .book { width: 140px; height: 185px; margin: 0 auto 2.5rem; }
+  .book-cover { width: 130px; height: 180px; background: linear-gradient(135deg, #1a1508 0%, #2c2010 50%, #1a1508 100%); border: 1px solid #b49146; display: flex; align-items: center; justify-content: center; flex-direction: column; gap: 10px; box-shadow: 8px 8px 24px rgba(0,0,0,0.7); }
+  .book-title { font-family: 'Playfair Display', serif; font-size: 11px; color: #b49146; text-align: center; padding: 0 14px; line-height: 1.5; }
+  .book-line { width: 64px; height: 0.5px; background: #b49146; }
+  .btn-primary { display: inline-block; background: #b49146; color: #0f0d0b; padding: 1.1rem 2.8rem; font-family: 'Cormorant Garamond', serif; font-size: 1.05rem; font-weight: 600; letter-spacing: 2px; text-transform: uppercase; cursor: pointer; border: none; text-decoration: none; transition: background .2s; }
+  .btn-primary:hover { background: #c9a85c; }
+  .price-block { margin: 1.5rem 0 0; }
+  .price-old { font-size: 0.9rem; color: #6a5e4e; text-decoration: line-through; }
+  .price-new { font-size: 2.2rem; font-weight: 600; color: #b49146; }
+  .price-note { font-size: 0.78rem; color: #7a6e5e; letter-spacing: 2px; text-transform: uppercase; margin-top: 4px; }
+  .section { padding: 3rem 2rem; max-width: 700px; margin: 0 auto; }
+  .divider { width: 60px; height: 0.5px; background: #b49146; margin: 0 auto 1.5rem; }
+  .section-title { font-family: 'Playfair Display', serif; font-size: 1.7rem; font-weight: 400; text-align: center; margin-bottom: 0.5rem; }
+  .section-sub { text-align: center; font-size: 1rem; font-weight: 300; color: #a09070; margin-bottom: 2rem; }
+  .pain-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; max-width: 540px; margin: 0 auto; }
+  .pain-item { display: flex; align-items: flex-start; gap: 12px; font-size: 1rem; line-height: 1.6; color: #c8bfa8; }
+  .pain-dot { width: 6px; height: 6px; border-radius: 50%; background: #b49146; flex-shrink: 0; margin-top: 8px; }
+  .section-dark { background: #0f0d0b; border-top: 0.5px solid rgba(180,145,70,0.15); border-bottom: 0.5px solid rgba(180,145,70,0.15); }
+  .benefits { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 1.5rem; max-width: 620px; margin: 0 auto; }
+  .benefit { text-align: center; padding: 1.5rem 1rem; border: 0.5px solid rgba(180,145,70,0.25); }
+  .benefit-icon { font-size: 1.4rem; margin-bottom: 0.75rem; color: #b49146; }
+  .benefit-title { font-family: 'Playfair Display', serif; font-size: 1.1rem; font-weight: 700; color: #b49146; margin-bottom: 0.5rem; }
+  .benefit-desc { font-size: 0.9rem; font-weight: 300; line-height: 1.5; color: #a09070; }
+  .testimonial { background: #1a1508; border-left: 2px solid #b49146; padding: 1.5rem 1.75rem; margin: 1rem auto; max-width: 520px; font-style: italic; font-size: 1.1rem; line-height: 1.65; color: #c8bfa8; }
+  .testimonial-author { margin-top: 0.75rem; font-style: normal; font-size: 0.78rem; letter-spacing: 2px; text-transform: uppercase; color: #b49146; }
+  .guarantee { display: flex; align-items: center; gap: 1.5rem; max-width: 500px; margin: 0 auto; padding: 1.75rem; border: 0.5px solid rgba(180,145,70,0.35); }
+  .guarantee-icon { font-size: 2.2rem; flex-shrink: 0; color: #b49146; }
+  .guarantee-title { font-weight: 600; color: #b49146; margin-bottom: 4px; }
+  .guarantee-text { font-size: 0.9rem; line-height: 1.6; color: #a09070; }
+  .countdown { display: flex; gap: 1rem; justify-content: center; margin: 1.25rem 0; }
+  .count-box { background: #1a1508; border: 0.5px solid rgba(180,145,70,0.45); padding: 0.85rem 1.25rem; text-align: center; min-width: 68px; }
+  .count-num { font-size: 2rem; font-weight: 600; color: #b49146; display: block; }
+  .count-label { font-size: 9px; letter-spacing: 2px; text-transform: uppercase; color: #7a6e5e; }
+  .steps { display: flex; align-items: flex-start; gap: 0; max-width: 560px; margin: 0 auto 2rem; }
+  .step { flex: 1; text-align: center; position: relative; }
+  .step:not(:last-child)::after { content: ''; position: absolute; top: 18px; right: 0; width: 50%; height: 0.5px; background: rgba(180,145,70,0.35); }
+  .step:not(:first-child)::before { content: ''; position: absolute; top: 18px; left: 0; width: 50%; height: 0.5px; background: rgba(180,145,70,0.35); }
+  .step-num { width: 36px; height: 36px; border: 1px solid #b49146; color: #b49146; display: flex; align-items: center; justify-content: center; font-size: 0.9rem; margin: 0 auto 0.6rem; }
+  .step-text { font-size: 0.82rem; color: #a09070; line-height: 1.4; padding: 0 4px; }
+  .final-cta { background: #0f0d0b; padding: 3.5rem 2rem; text-align: center; border-top: 1px solid rgba(180,145,70,0.2); }
+  .trust-line { font-size: 0.75rem; color: #6a5e4e; letter-spacing: 2px; text-transform: uppercase; margin-top: 1.25rem; }
+  @media (max-width: 520px) {
+    .pain-grid { grid-template-columns: 1fr; }
+    .benefits { grid-template-columns: 1fr; }
+    .steps { flex-direction: column; align-items: center; gap: 1rem; }
+    .step::before, .step::after { display: none; }
+  }
+</style>
 </head>
-<body style="margin: 0;">
-    <div id = "sumir"; style="
-    background-color: aqua;
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 30%;
-">
+<body>
 
-        <h1 style="font-size: 100px;margin: 0;">GERADOR</h1>
-        <button onclick="gerarPessoa()" style="width: 200px; height: 200px; background-color: blue;">GERAR</button>
+<div class="hero">
+  <div class="eyebrow">Método exclusivo · Edição limitada</div>
+  <h1>O Mapa da<br><em>Riqueza Interior</em></h1>
+  <p class="subtitle">O guia definitivo para transformar sua relação com o dinheiro e construir uma vida de abundância autêntica</p>
+  <div class="book">
+    <div class="book-cover">
+      <div class="book-line"></div>
+      <div class="book-title">O MAPA DA RIQUEZA INTERIOR</div>
+      <div class="book-line"></div>
     </div>
-    <div id="id_dodiv"></div>
-    
-</body>
+  </div>
+  <a href="#comprar" class="btn-primary">Quero meu exemplar agora</a>
+  <div class="price-block">
+    <div class="price-old">De R$ 197</div>
+    <div class="price-new">R$ 47</div>
+    <div class="price-note">Oferta encerra em breve · Acesso imediato</div>
+  </div>
+</div>
+
+<div class="section" style="background:#111009;">
+  <div class="section-title">Isso soa familiar?</div>
+  <div class="divider"></div>
+  <div class="pain-grid">
+    <div class="pain-item"><div class="pain-dot"></div><span>Trabalha muito mas o dinheiro some no fim do mês</span></div>
+    <div class="pain-item"><div class="pain-dot"></div><span>Sente culpa ao gastar com você mesmo</span></div>
+    <div class="pain-item"><div class="pain-dot"></div><span>Adia investimentos por "falta de dinheiro"</span></div>
+    <div class="pain-item"><div class="pain-dot"></div><span>Compara sua vida financeira com a dos outros</span></div>
+    <div class="pain-item"><div class="pain-dot"></div><span>Tem medo de falar sobre dinheiro com a família</span></div>
+    <div class="pain-item"><div class="pain-dot"></div><span>Sente que nunca vai ter o suficiente</span></div>
+  </div>
+</div>
+
+<div class="section section-dark">
+  <div class="section-title">O que você vai descobrir</div>
+  <div class="divider"></div>
+  <div class="benefits">
+    <div class="benefit">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-title">Mentalidade</div>
+      <div class="benefit-desc">Reprograme crenças limitantes sobre dinheiro herdadas da infância</div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-title">Estratégia</div>
+      <div class="benefit-desc">Plano prático e acessível de construção de riqueza real</div>
+    </div>
+    <div class="benefit">
+      <div class="benefit-icon">◈</div>
+      <div class="benefit-title">Liberdade</div>
+      <div class="benefit-desc">Viva com abundância sem ansiedade financeira constante</div>
+    </div>
+  </div>
+  <div style="margin-top: 2.5rem;">
+    <div class="testimonial">
+      "Em 3 meses apliquei o método e saí do vermelho para ter R$ 8.000 investidos. Não acreditava que era possível."
+      <div class="testimonial-author">— Fernanda M., São Paulo</div>
+    </div>
+    <div class="testimonial">
+      "Esse ebook mudou minha relação com o dinheiro de forma que nenhum curso caro conseguiu fazer."
+      <div class="testimonial-author">— Ricardo O., Curitiba</div>
+    </div>
+  </div>
+</div>
+
+<div class="section" style="background:#0f0d0b; text-align:center;">
+  <div class="section-title">Garantia incondicional</div>
+  <div class="divider"></div>
+  <div class="guarantee">
+    <div class="guarantee-icon">⬡</div>
+    <div>
+      <div class="guarantee-title">7 dias ou seu dinheiro de volta</div>
+      <div class="guarantee-text">Se por qualquer motivo não ficar satisfeito, devolvemos 100% do valor. Sem perguntas, sem burocracia, sem complicação.</div>
+    </div>
+  </div>
+</div>
+
+<div class="final-cta" id="comprar">
+  <div class="eyebrow" style="color:#b49146;">Oferta especial · Tempo limitado</div>
+  <div class="countdown">
+    <div class="count-box"><span class="count-num" id="h">02</span><span class="count-label">horas</span></div>
+    <div class="count-box"><span class="count-num" id="m">47</span><span class="count-label">min</span></div>
+    <div class="count-box"><span class="count-num" id="s">33</span><span class="count-label">seg</span></div>
+  </div>
+  <div class="steps">
+    <div class="step"><div class="step-num">1</div><div class="step-text">Clique no botão abaixo</div></div>
+    <div class="step"><div class="step-num">2</div><div class="step-text">Acesse imediatamente</div></div>
+    <div class="step"><div class="step-num">3</div><div class="step-text">Transforme sua vida</div></div>
+  </div>
+  <a href="#" class="btn-primary" style="font-size:1.15rem; padding:1.2rem 3.5rem;">Garantir acesso por R$ 47</a>
+  <div class="trust-line">pagamento seguro · acesso imediato · PDF + áudio</div>
+</div>
+
 <script>
-
-
-function gerarPessoa(){
-
-    sumir.style.display = 'none'
-
-
-   const pessoas = [
-"Ana","Bruno","Carlos","Daniel","Eduardo","Fernanda","Gabriel","Helena","Igor","Julia",
-"Kleber","Larissa","Marcos","Natalia","Otavio","Patricia","Rafael","Sabrina","Thiago","Ursula",
-"Victor","Wesley","Xavier","Yasmin","Zeca","Alice","Breno","Caio","Diego","Elisa",
-"Felipe","Giovana","Hugo","Isabela","Joao","Karen","Leonardo","Mirela","Nicolas","Olivia",
-"Paulo","Quezia","Renato","Silvia","Tales","Vera","William","Yuri","Zilda","Andre"
-];
-
-const emails = [
-"ana@outlook.com","bruno@gmail.com","carlos@gmail.com","daniel@gmail.com","edu@gmail.com",
-"fernanda@gmail.com","gabriel@gmail.com","helena@gmail.com","igor@gmail.com","julia@gmail.com",
-"kleber@gmail.com","larissa@outlook.com","marcos@outlook.com","natalia@outlook.com","otavio@outlook.com",
-"patricia@outlook.com","rafael@outlook.com","sabrina@outlook.com","thiago@outlook.com","ursula@outlook.com",
-"victor@outlook.com","wesley@gov.com","xavier@gov.com","yasmin@gov.com","zeca@gov.com",
-"alice@hotmail.com","breno@hotmail.com","caio@hotmail.com","diego@hotmail.com","elisa@hotmail.com",
-"felipe@hotmail.com","giovana@hotmail.com","hugo@gov.com","isabela@gov.com","joao@gov.com",
-"karen@gov.com","leonardo@yahoo.com","mirela@yahoo.com","nicolas@yahoo.com","olivia@yahoo.com",
-"paulo@yahoo.com","quezia@yahoo.com","renato@yahoo.com","silvia@yahoo.com","tales@yahoo.com",
-"vera@yahoo.com","william@yahoo.com","yuri@yahoo.com","zilda@yahoo.com","andre@yahoo.com"
-];
-
-const senhas = [
-"123","abc","senha1","qwerty","pass123","senha2","teste1","1234","abcd","senha3",
-"xyz","1111","2222","3333","4444","5555","6666","7777","8888","9999",
-"pass1","pass2","pass3","pass4","pass5","segredo1","segredo2","segredo3","segredo4","segredo5",
-"login1","login2","login3","login4","login5","admin1","admin2","admin3","admin4","admin5",
-"user1","user2","user3","user4","user5","root1","root2","root3","root4","root5"
-];
-
-
-cpf1 = Math.floor(Math.random() * (987 - 157 + 157)) + 157
-cpf2 = Math.floor(Math.random() * (987 - 157 + 157)) + 157
-cpf3 = Math.floor(Math.random() * (987 - 157 + 157)) + 157
-cpf4 = Math.floor(Math.random() * (97 - 10 + 1)) + 10
-cpf5 = Math.floor(Math.random() * (9 - 1 + 1)) + 1
-
-
-//estrutura cpf 3.3.3-2
-//estrutura rg 2.3.3.1
-
-telefone = Math.floor(Math.random() * (11998735343 - 11911111111  + 1)) + 11911111111
-
-         email = Math.floor(Math.random() * (50 - 1 + 1)) + 1
-    nome = Math.floor(Math.random() * (50 - 1 + 1)) + 1
-    senha = Math.floor(Math.random() * (50 - 1 + 1)) + 1
-
-
-
-id_dodiv.innerHTML = `=============GERADOR DE PESSOA ALEATÓRIA================== <br> Nome: ${pessoas[nome]} <br> Email: ${emails[email]} <br> Senha: ${senhas[senha]}<br>
-CPF:${cpf1}.${cpf2}.${cpf3}-${cpf4} <br>
-RG: ${cpf4}.${cpf1}.${cpf2}-${cpf5} <br>
-Telefone:${telefone}
-
-<img src="https://thispersondoesnotexist.com"  width="400">
-`
-
-
-
-
-
-}
-
-
-
-
-
-
-
-
-
-
-
+  let total = 2*3600 + 47*60 + 33;
+  function tick() {
+    if (total <= 0) return;
+    total--;
+    document.getElementById('h').textContent = String(Math.floor(total/3600)).padStart(2,'0');
+    document.getElementById('m').textContent = String(Math.floor((total%3600)/60)).padStart(2,'0');
+    document.getElementById('s').textContent = String(total%60).padStart(2,'0');
+  }
+  setInterval(tick, 1000);
 </script>
+</body>
 </html>
